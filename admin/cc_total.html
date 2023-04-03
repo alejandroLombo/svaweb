@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+
+    <title>Cuentas Corrientes</title>
+</head>
+
+<body>
+
+  <div class="menu position-fixed" id="menu"></div>
+  
+  <div class="container">
+      <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-cc" id="AgregarCtaCte">
+  <i class="bi bi-file-earmark-plus"></i>  
+  Agregar Cta Cte
+  </button>
+  
+  <!-- Modal agregar cta cte -->
+  <div class="modal fade" id="add-cc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1>Agregar Cta Cte</h1>
+          <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Cuenta Corriente</h1> -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="add-new" method="post" class="form-control">
+                <label for="name">Cliente</label>
+                <select class="form-control" name="clientes" id="clientes">
+                  <option selected>Seleccione Cliente</option>
+
+                </select>
+                <!-- <input class="form-control" type="text" name="name" id="cliente" required> -->
+                <label  for="">Nº de Remito</label>
+                <input class="form-control" type="number" name="n_remito" id="n_remito" pattern="[0-9]" required>
+                <label  for="">total de Remito</label>
+                <input class="form-control" type="number" name="t_remito" id="t_remito" pattern="[0-9]" required>
+                <label for="">Efectivo</label>
+                <input class="form-control" type="number" name="efectivo" id="efectivo" pattern="[0-9]" required>
+                <label for="">Transferencia</label>
+                <input  class="form-control" type="number" name="transf" id="transf" pattern="[0-9]" required>
+                <input class="btn btn-success my-2" type="submit" value="Agregar" data-bs-dismiss="modal">
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+     <div class="container" style="background-color: #DCD8D8;">
+       <table id="tablaSaldos" class="table table-striped my-4" style="width:100%">
+           <thead class="bg-primary">
+               <tr>
+                   <th scope="col">ID Cta Cte</th>
+                   <th scope="col">Fecha</th>
+                   <th scope="col">Cliente</th>
+                   <th scope="col">Nº Remito</th>
+                   <th scope="col">Total del Remito</th>
+                   <th scope="col">Zona</th>
+                   <th scope="col">Saldo</th>
+                   <th scope="col">Acciones</th>
+               </tr>
+           </thead>
+           <tbody id="tcca">
+             
+          </tbody>
+
+        </table>
+        <div class="container my-4">
+          <div class="row">
+              <div class="card">
+
+                <h3>Totales</h3>
+              </div>
+                  
+                    <div class="col-md-4 col-lg-4 col-xl-4 my-3">
+                      <div class="card">
+                        <label for="">Total Saldos pendientes: $</label>
+                        <label id="saldos"></label>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4 my-3">
+                      <div class="card">
+                        <label for="">Total Saldos Rio Segundo: $</label>
+                        <label id="r2_saldos"></label>
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xl-4 my-3">
+                      <div class="card">
+                          <label for="">Total Saldos Oncativo: $</label>
+                          <label id="onc_saldos"></label>
+                      </div>
+                    </div>
+                  
+                
+            
+          </div>
+        </div>        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal ver pagos -->
+<div class="modal fade" id="ver-pagos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 style="color: black;">Ver Pagos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>Id</td>
+              <td>Cta Cte</td>
+              <td>Fecha</td>
+              <td>Efectivo</td>
+              <td>Transferencia</td>
+              <td>Cobrador</td>
+              
+            </tr>
+          </thead>
+          <tbody id="ver-p" class="table-group-divider">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- datatables js -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.13.1/api/sum().js"></script>
+
+    <!-- js Personalizados -->
+    <script src="../js/cc_total.js"></script>
+    <script src="../js/menu-admin.js"></script>
+</body>
+
+</html>

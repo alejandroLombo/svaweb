@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <title>Reparto</title>
+</head>
+
+<body>
+    <div class="menu" id="menu"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="nvorep mt-2">
+                    <button id="ini-rep" class="btn btn-primary">Iniciar Reparto</button>
+                </div>
+
+
+<!-- Descuentos y Faltantes -->
+
+                <div class="descuentos mt-2" id="desc">
+                    <button id="desc-falt" class="btn btn-primary" hidden>Descuentos y Faltantes</button>
+                </div>
+                <div class="descuentos" id="tdescuentos" hidden>
+
+                    <h4>Descuentos</h4>
+                
+                <button type="button" class="btn btn-success my-4" id="addDesc">
+                <i class="bi bi-file-earmark-plus"></i>Agregar</button>
+                <div id="form-desc" hidden>
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="" method="post">
+                                <select name="cliente" id="clientes">
+                                    
+                                </select>
+                                <select name="producto" id="producto">
+                                    <option value="1">Vainillas Mauri</option>
+                                </select>
+                                <input type="number" name="cantidad" id="cantidad">
+                                <input type="number" name="precio" id="precio">
+                                <input type="submit" value="Agregar">
+                            </form>
+                        </div>
+                    </div>
+                </div>    
+                <table class="table" id="tdesc" style="background-color: aliceblue;">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Cliente</th>
+                                <th>Nº Remito</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+
+                    <h4>Faltantes</h4> 
+                <button  type="button" class="btn btn-success my-4" id="addFalt">
+                    <i class="bi bi-file-earmark-plus"></i>Agregar</button>
+                    <table class="table" id="tfalt" style="background-color: aliceblue;">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Cliente</th>
+                                <th>Nº Remito</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+<!-- Cta Cte -->
+                <div class="ctate mt-2" id="ctacte">
+                    <button class="btn btn-primary" id="ccte" hidden>Cuenta Corrientes</button>
+                </div>  
+                <div class="tccte"  id="tccte" hidden>
+                <button type="button" class="btn btn-success my-4" id="boton"><i class="bi bi-file-earmark-plus"></i>Agregar</button>    
+                        <div id="ventana" hidden>
+                        <div class="card">
+                            <button class="btn-close" id="cerrar"></button>
+                            <form id="nuevaCtaCte" method="post" class="form-control">
+                                <div class="form-control">
+                                    <label for="name">Cliente</label>
+                                    <select class="form-control" name="ver-clientes" id="ver-clientes">
+                                        <option selected>Seleccione Cliente</option>
+                                    </select>
+
+                                </div>
+                                    
+                                    <label  for="">Nº de Remito</label>
+                                    <input class="form-control" type="number" name="n_remito" id="numRem" pattern="[0-9]" required>
+                                    <label  for="">total de Remito</label>
+                                    <input class="form-control" type="number" name="t_remito" id="totRem" pattern="[0-9]" required>
+                                    <label for="">Efectivo</label>
+                                    <input class="form-control" type="number" name="efectivo" id="efecRem" pattern="[0-9]" required>
+                                    <label for="">Transferencia</label>
+                                    <input  class="form-control" type="number" name="transf" id="transfRem" pattern="[0-9]" required>
+                                    <input class="btn btn-success my-2" type="submit" value="Agregar">
+                                </form>
+                        </div>
+                    </div>
+  
+                    <table class="table" style="background-color: aliceblue;">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Nº remito</th>
+                                <th>Total Remito</th>
+                                <th>Saldo</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tcca">
+                            
+    
+                        </tbody>
+                    </table>
+
+                </div>  
+                <div class="gastos mt-2" id="gastos">
+                    <button class="btn btn-primary" id="gastos-rep" hidden>Gastos</button>
+                </div>
+                <div class="tgastos" id="tgasrep" hidden>
+                    <table class="table" style="background-color: aliceblue;">
+                                             <!-- Button trigger modal Gastos -->
+                <button type="button" class="btn btn-success my-4" data-bs-toggle="modal" data-bs-target="#add-gastos">
+                    <i class="bi bi-file-earmark-plus"></i>Agregar Gasto</button>
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Observacion</th>
+                                <th>Monto</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="ver-gastos">
+    
+                        </tbody>
+                    </table>
+
+                </div> 
+                <div class="billetes mt-2" id="billetes">
+                    <button class="btn btn-primary" id="endrep" hidden>Terminar Reparto</button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+   <!-- Modal agregar Gastos -->
+   <div class="modal fade" id="add-gastos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1>Agregar Gasto</h1>
+          <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Cuenta Corriente</h1> -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="form-gastos" method="post" class="form-control">
+                <label for="name">Categoria de Gasto</label>
+                <select class="form-control" id="catgastos">
+                  <option selected>Seleccione Gastos</option>
+                  <option value="1">Gasoil</option>
+                  <option value="2">Otro(vehiculos)</option>
+                  <option value="3">Adelanto</option>
+                  </select>
+                <label  for="observacion">Observacion</label>
+                <input class="form-control" type="text" id="observacion" required>
+                <label for="efectivo">Efectivo</label>
+                <input class="form-control" type="number" id="monto" pattern="[0-9]" required>
+                
+                <input class="btn btn-success my-2" type="submit" value="Agregar" data-bs-dismiss="modal">
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- <select name="ver-clientes" id="ver-clientes"></select> -->
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="../js/menu-rep.js"></script>
+<script src="../js/index-rep.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</body>
+
+</html>

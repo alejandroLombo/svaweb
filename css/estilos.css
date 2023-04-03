@@ -1,0 +1,32 @@
+
+body{
+    background-color: #B1E3FC;
+    background-image: url(../img/fondo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    background-color: aliceblue;
+    display: inline;
+    border-radius: 5px;
+}
+ 
+.menu{
+
+    
+    width: 100%; 
+} 
+
+#cerrar{
+    padding-right: 3px;
+    text-align: center;
+}
+
+#AgregarCtaCte{
+    margin-right: 30px;
+    margin-top: 70px;
+}
+/* #guardarVentas{
+    margin-left: 900px;
+} */

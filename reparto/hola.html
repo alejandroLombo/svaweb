@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button id="boton">Abrir div</button>
+    </div>
+
+    <div id="ventana" hidden>
+        <div class="card">
+            <form id="nuevaCtaCte" method="post" class="form-control">
+                
+                <label for="name">Cliente</label>
+                <select class="form-control" name="ver-clientes" id="ver-clientes">
+                    <option selected>Seleccione Cliente</option>
+                    
+
+                    </select>
+                    <!-- <input class="form-control" type="text" name="name" id="cliente" required> -->
+                    <label  for="">Nº de Remito</label>
+                    <input class="form-control" type="number" name="n_remito" id="numRem" pattern="[0-9]" required>
+                    <label  for="">total de Remito</label>
+                    <input class="form-control" type="number" name="t_remito" id="totRem" pattern="[0-9]" required>
+                    <label for="">Efectivo</label>
+                    <input class="form-control" type="number" name="efectivo" id="efecRem" pattern="[0-9]" required>
+                    <label for="">Transferencia</label>
+                    <input  class="form-control" type="number" name="transf" id="transfRem" pattern="[0-9]" required>
+                    <input class="btn btn-success my-2" type="submit" value="Agregar" data-bs-dismiss="modal">
+                </form>
+        </div>
+
+
+
+        <button id="cerrar">Cerrar</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="../js/hola.js"></script>
+</body>
+</html>
+
+
+
+    <!------------------------------- Modal agregar Descuento---------------------->
+    <div class="modal fade" id="add-desc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h1>Agregar Cta Cte</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-desc" method="post" class="form-control">
+                    <label for="name">Cliente</label>
+                    <select class="form-control" name="dclientes" id="dclientes">
+                      <option selected>Seleccione Cliente</option>
+    
+                    </select>
+                    <label  for="">Nº de Remito</label>
+                    <input class="form-control" type="number" name="n_remito" id="n_remito" pattern="[0-9]" required>
+                    <label  for="">total de Remito</label>
+                    <input class="form-control" type="number" name="t_remito" id="t_remito" pattern="[0-9]" required>
+                    <label for="">Efectivo</label>
+                    <input class="form-control" type="number" name="efectivo" id="efectivo" pattern="[0-9]" required>
+                    <label for="">Transferencia</label>
+                    <input  class="form-control" type="number" name="transf" id="transf" pattern="[0-9]" required>
+                    <input class="btn btn-success my-2" type="submit" value="Agregar" data-bs-dismiss="modal">
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    
+    
+      <!-- Modal agregar Faltante -->
+      <div class="modal fade" id="add-falt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h1>Agregar Cta Cte</h1>
+              <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Cuenta Corriente</h1> -->
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="add-new" method="post" class="form-control">
+                    <label for="name">Cliente</label>
+                    <select class="form-control" name="clientes" id="clientes">
+                      <option selected>Seleccione Cliente</option>
+    
+                    </select>
+                    <!-- <input class="form-control" type="text" name="name" id="cliente" required> -->
+                    <label  for="">Nº de Remito</label>
+                    <input class="form-control" type="number" name="n_remito" id="n_remito" pattern="[0-9]" required>
+                    <label  for="">total de Remito</label>
+                    <input class="form-control" type="number" name="t_remito" id="t_remito" pattern="[0-9]" required>
+                    <label for="">Efectivo</label>
+                    <input class="form-control" type="number" name="efectivo" id="efectivo" pattern="[0-9]" required>
+                    <label for="">Transferencia</label>
+                    <input  class="form-control" type="number" name="transf" id="transf" pattern="[0-9]" required>
+                    <input class="btn btn-success my-2" type="submit" value="Agregar" data-bs-dismiss="modal">
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
